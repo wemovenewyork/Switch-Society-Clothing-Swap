@@ -1,0 +1,1582 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Switch Society — Franchise · The Statement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&family=Inter:wght@400;500;600;700;800;900&family=Pinyon+Script&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --magenta:#D6168B;
+    --magenta-2:#FF1F9E;
+    --magenta-deep:#9B0F66;
+    --gold:#C9A24C;
+    --gold-2:#E6C778;
+    --gold-3:#8E6E2A;
+    --black:#0A0A0A;
+    --black-2:#141414;
+    --black-3:#1c1c1c;
+    --ivory:#F5EFE6;
+    --blush:#F2D9E4;
+    --rule:rgba(245,239,230,.14);
+    --rule-strong:rgba(245,239,230,.26);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none}
+  html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;height:0;display:none}
+  body{
+    background:var(--black);color:var(--ivory);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--magenta);color:#fff}
+
+  .wrap{max-width:1480px;margin:0 auto;padding:0 32px}
+  .full{width:100%;padding:0 32px}
+
+  /* eyebrows — bold sans, not mono */
+  .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-weight:700;font-size:11px;
+    letter-spacing:.32em;text-transform:uppercase;
+    color:var(--magenta-2);display:inline-flex;align-items:center;gap:14px;
+  }
+  .eyebrow::before{content:"";width:32px;height:2px;background:var(--magenta);display:inline-block}
+  .eyebrow.gold{color:var(--gold-2)}
+  .eyebrow.gold::before{background:var(--gold)}
+
+  .society, em.society{
+    font-style:italic;font-family:'Pinyon Script','Playfair Display',cursive;
+    font-weight:400;
+  }
+  .society-serif{font-style:italic;font-family:'Playfair Display',serif;font-weight:500}
+  .gold-text{
+    background:linear-gradient(180deg,var(--gold-2) 0%,var(--gold) 45%,var(--gold-3) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+
+  /* ─── Header — sticky, black, with live counter ───────── */
+  header.site{
+    position:sticky;top:0;z-index:80;
+    background:var(--black);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav{
+    display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+    gap:32px;padding:14px 32px;
+  }
+  .logo{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
+  .logo .row1{
+    font-family:'Playfair Display',serif;font-weight:700;
+    letter-spacing:.18em;color:var(--magenta);font-size:18px;
+  }
+  .logo .row2{
+    font-family:'Pinyon Script',cursive;font-size:24px;
+    margin-top:-2px;margin-bottom:6px;margin-left:32px;line-height:1.15;padding-bottom:2px;
+    background:linear-gradient(180deg,var(--gold-2),var(--gold) 55%,var(--gold-3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;
+  }
+  .logo .row3{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:8px;
+    letter-spacing:.42em;color:var(--ivory);margin-top:-2px;
+  }
+  nav.links{display:flex;gap:28px;justify-content:center}
+  nav.links a{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:11px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--ivory);
+    transition:color .15s ease;
+  }
+  nav.links a:hover{color:var(--magenta-2)}
+  .nav-right{display:flex;gap:14px;align-items:center}
+  .live{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:10px;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--gold-2);
+    display:flex;align-items:center;gap:10px;
+  }
+  .live .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--magenta);
+    box-shadow:0 0 0 0 rgba(214,22,139,.7);animation:pulse 2s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(214,22,139,.7)}
+    70%{box-shadow:0 0 0 12px rgba(214,22,139,0)}
+    100%{box-shadow:0 0 0 0 rgba(214,22,139,0)}
+  }
+  .nav-cta{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:11px;
+    letter-spacing:.22em;text-transform:uppercase;
+    padding:14px 22px;background:var(--magenta);color:#fff;
+    transition:all .15s ease;
+  }
+  .nav-cta:hover{background:var(--magenta-2);box-shadow:0 0 32px rgba(255,31,158,.5)}
+  .menu-btn{display:none;background:transparent;border:0;color:var(--ivory);font-size:22px}
+
+  /* ─── Hero — full-bleed, oversized, mixed type ────────── */
+  .hero{
+    position:relative;
+    min-height:calc(100vh - 60px);
+    padding:64px 32px 32px;
+    display:grid;grid-template-columns:1fr;
+    background:
+      radial-gradient(80% 60% at 100% 0%, rgba(214,22,139,.28), transparent 60%),
+      radial-gradient(60% 50% at 0% 100%, rgba(155,15,102,.22), transparent 70%),
+      var(--black);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;
+    gap:48px;align-items:end;
+    width:100%;max-width:1480px;margin:0 auto;
+  }
+  .hero h1{
+    font-family:'Playfair Display',serif;
+    font-weight:500;
+    font-size:clamp(72px,12vw,200px);
+    line-height:.86;letter-spacing:-.045em;
+    margin:32px 0 0;
+  }
+  .hero h1 .accent{color:var(--magenta);font-style:italic;font-weight:600}
+  .hero h1 .script{
+    font-family:'Pinyon Script',cursive;
+    font-weight:400;font-style:normal;letter-spacing:0;
+    background:linear-gradient(180deg,var(--gold-2),var(--gold) 50%,var(--gold-3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    font-size:.78em;
+  }
+  .hero .deck{
+    max-width:480px;margin-top:36px;
+    font-size:18px;line-height:1.55;color:#cfc8bb;font-weight:400;
+  }
+  .hero .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Inter',sans-serif;font-weight:700;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    padding:20px 28px;border:2px solid transparent;
+    transition:all .15s ease;cursor:pointer;
+  }
+  .btn-primary{background:var(--magenta);color:#fff;border-color:var(--magenta)}
+  .btn-primary:hover{background:var(--magenta-2);border-color:var(--magenta-2);transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--gold)}
+  .btn-ghost{background:transparent;color:var(--ivory);border-color:var(--ivory)}
+  .btn-ghost:hover{background:var(--ivory);color:var(--black)}
+  .btn .arrow{transition:transform .15s ease}
+  .btn:hover .arrow{transform:translateX(4px)}
+
+  .hero-image{
+    position:relative;align-self:stretch;min-height:560px;
+  }
+  .placeholder{
+    position:relative;overflow:hidden;
+    background:
+      repeating-linear-gradient(135deg,rgba(245,239,230,.06) 0 12px,rgba(245,239,230,.02) 12px 24px),
+      #1a1a1a;
+    border:1px solid var(--rule);
+  }
+  .placeholder.magenta{
+    background:
+      radial-gradient(60% 80% at 50% 30%, rgba(214,22,139,.5), transparent 70%),
+      repeating-linear-gradient(135deg,rgba(245,239,230,.04) 0 12px,rgba(245,239,230,.02) 12px 24px),
+      #1a1014;
+    border:1px solid rgba(214,22,139,.4);
+  }
+  .placeholder.ivory{
+    background:
+      repeating-linear-gradient(135deg,rgba(10,10,10,.05) 0 12px,rgba(10,10,10,.02) 12px 24px),
+      var(--ivory);
+    border:1px solid rgba(245,239,230,.4);
+  }
+  .placeholder .label{
+    position:absolute;top:14px;left:14px;
+    font-family:'Inter',sans-serif;font-weight:600;font-size:10px;
+    letter-spacing:.24em;text-transform:uppercase;color:rgba(245,239,230,.55);
+  }
+  .placeholder.ivory .label{color:rgba(10,10,10,.45)}
+  .hero-image .ph-main{position:absolute;inset:0 0 96px 24px}
+  .hero-image .ph-2{
+    position:absolute;left:0;bottom:0;width:54%;height:160px;
+  }
+  .hero-image .stamp{
+    position:absolute;top:24px;right:24px;
+    background:var(--magenta);color:#fff;padding:8px 14px;
+    font-family:'Inter',sans-serif;font-weight:800;font-size:10px;
+    letter-spacing:.24em;text-transform:uppercase;
+    transform:rotate(4deg);
+  }
+
+  /* hero stat strip — oversized */
+  .hero-strip{
+    margin:40px auto 0;width:100%;max-width:1480px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+    border-top:1px solid var(--rule);padding-top:28px;
+  }
+  .hero-strip .col .num{
+    font-family:'Playfair Display',serif;font-weight:500;
+    font-size:clamp(40px,5vw,72px);line-height:.95;letter-spacing:-.025em;
+  }
+  .hero-strip .col:nth-child(1) .num{color:var(--magenta)}
+  .hero-strip .col:nth-child(2) .num,
+  .hero-strip .col:nth-child(3) .num{color:var(--ivory)}
+  .hero-strip .col:nth-child(4) .num{
+    background:linear-gradient(180deg,var(--gold-2),var(--gold) 55%,var(--gold-3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .hero-strip .col .lab{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:10px;
+    letter-spacing:.24em;text-transform:uppercase;color:#9d9485;margin-top:10px;line-height:1.6;
+  }
+
+  /* ─── Marquee ─────────────────────────────────────────── */
+  .marquee{
+    background:var(--magenta);color:#fff;
+    overflow:hidden;padding:18px 0;
+    border-top:1px solid var(--magenta-deep);border-bottom:1px solid var(--magenta-deep);
+  }
+  .marquee-track{
+    display:flex;gap:48px;white-space:nowrap;
+    animation:scroll 28s linear infinite;
+    font-family:'Playfair Display',serif;font-style:italic;font-weight:500;font-size:32px;
+  }
+  .marquee-track span{display:inline-flex;align-items:center;gap:48px}
+  .marquee-track span::after{content:"✦";font-style:normal;font-size:18px;color:var(--gold-2)}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ─── Cultural — black, massive number ────────────────── */
+  .cultural{
+    padding:120px 32px;
+    background:var(--black);
+    position:relative;
+  }
+  .cultural-inner{
+    max-width:1480px;margin:0 auto;
+    display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;
+  }
+  .cultural .big-num{
+    font-family:'Playfair Display',serif;font-weight:700;
+    font-size:clamp(180px,28vw,460px);
+    line-height:.82;letter-spacing:-.05em;
+    color:var(--ivory);
+    position:relative;
+  }
+  .cultural .big-num .pct{
+    color:var(--magenta);font-style:italic;font-weight:600;
+  }
+  .cultural .right h2{
+    font-family:'Playfair Display',serif;font-weight:500;
+    font-size:clamp(32px,3.4vw,52px);
+    line-height:1.04;letter-spacing:-.02em;margin:24px 0 24px;
+  }
+  .cultural .right p{
+    color:#cfc8bb;font-size:17px;line-height:1.7;margin:0 0 18px;max-width:480px;
+  }
+  .cultural .right p a{color:var(--magenta-2);border-bottom:1px solid var(--magenta);padding-bottom:1px}
+  .cultural .source{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:10px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--gold-2);
+    margin-top:24px;
+  }
+
+  /* ─── The Model — A/B/C grading ───────────────────────── */
+  .model{
+    padding:140px 32px;background:var(--ivory);color:var(--black);
+    position:relative;
+  }
+  .model-inner{max-width:1480px;margin:0 auto}
+  .model .head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:32px;margin-bottom:64px}
+  .model h2{
+    font-family:'Playfair Display',serif;font-weight:500;
+    font-size:clamp(48px,6.4vw,108px);
+    line-height:.94;letter-spacing:-.03em;margin:18px 0 0;
+  }
+  .model h2 em{font-style:italic;font-weight:600;color:var(--magenta)}
+  .model .deck{font-size:17px;color:#3a3a3a;max-width:440px;line-height:1.65}
+  .model .eyebrow{color:var(--magenta-deep)}
+  .model .eyebrow::before{background:var(--magenta-deep)}
+
+  .grading{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--black)}
+  .grading .grade{
+    padding:48px 32px;border-right:1px solid rgba(10,10,10,.14);
+    position:relative;
+  }
+  .grading .grade:last-child{border-right:0}
+  .grading .grade-a{background:var(--black);color:var(--ivory)}
+  .grading .grade-b{background:var(--ivory)}
+  .grading .grade-c{background:var(--blush)}
+  .grading .letter{
+    font-family:'Playfair Display',serif;font-weight:800;
+    font-size:clamp(140px,16vw,260px);line-height:.84;letter-spacing:-.06em;
+  }
+  .grading .grade-a .letter{color:var(--magenta)}
+  .grading .grade-b .letter{color:var(--black);font-style:italic;font-weight:500}
+  .grading .grade-c .letter{color:var(--magenta-deep);font-weight:700}
+  .grading h3{
+    font-family:'Playfair Display',serif;font-weight:600;
+    font-size:28px;margin:24px 0 14px;line-height:1.1;letter-spacing:-.01em;
+  }
+  .grading .grade-a p{color:#cfc8bb}
+  .grading p{font-size:15px;line-height:1.65;color:#3a3a3a;margin:0}
+  .grading .lab{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:10px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--magenta);margin-bottom:14px;
+  }
+  .grading .grade-a .lab{color:var(--gold-2)}
+  .grading .grade-b .lab{color:var(--magenta-deep)}
+  .grading .pts{
+    margin-top:24px;padding-top:18px;border-top:1px solid currentColor;
+    font-family:'Playfair Display',serif;font-weight:600;font-size:24px;
+    display:flex;justify-content:space-between;
+  }
+  .grading .grade-a .pts{border-color:rgba(245,239,230,.2)}
+  .grading .pts .pn{color:var(--gold)}
+  .grading .grade-a .pts .pn{
+    background:linear-gradient(180deg,var(--gold-2),var(--gold) 55%,var(--gold-3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+
+  /* points flow */
+  .points-flow{
+    margin-top:96px;padding:48px 0;
+    border-top:2px solid var(--black);border-bottom:2px solid var(--black);
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:center;
+  }
+  .points-flow .step{position:relative}
+  .points-flow .step::after{
+    content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);
+    font-family:'Playfair Display',serif;font-size:32px;color:var(--magenta);
+  }
+  .points-flow .step:last-child::after{display:none}
+  .points-flow .num{
+    font-family:'Inter',sans-serif;font-weight:800;font-size:11px;
+    letter-spacing:.24em;color:var(--magenta);margin-bottom:8px;
+  }
+  .points-flow h4{
+    font-family:'Playfair Display',serif;font-weight:600;font-size:24px;
+    line-height:1.1;letter-spacing:-.01em;margin:0 0 8px;
+  }
+  .points-flow p{font-size:14px;color:#3a3a3a;line-height:1.55;margin:0}
+
+  /* ─── Proof — full-bleed black hero number ────────────── */
+  .proof{
+    padding:0;background:var(--black);
+    border-top:2px solid var(--magenta);border-bottom:2px solid var(--magenta);
+  }
+  .proof-hero{
+    padding:96px 32px;text-align:center;
+    background:
+      radial-gradient(60% 60% at 50% 30%, rgba(214,22,139,.18), transparent 70%),
+      var(--black);
+    border-bottom:1px solid var(--rule);
+  }
+  .proof-hero .lead{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:11px;
+    letter-spacing:.32em;text-transform:uppercase;color:var(--magenta-2);
+    margin-bottom:24px;
+  }
+  .proof-hero .massive{
+    font-family:'Playfair Display',serif;font-weight:700;
+    font-size:clamp(120px,22vw,360px);
+    line-height:.86;letter-spacing:-.05em;
+    color:var(--ivory);
+  }
+  .proof-hero .massive .plus{color:var(--magenta);font-style:italic}
+  .proof-hero .cap{
+    font-family:'Playfair Display',serif;font-style:italic;font-size:24px;
+    color:var(--gold-2);margin-top:24px;
+  }
+  .proof-detail{
+    padding:96px 32px;
+  }
+  .proof-grid{
+    max-width:1480px;margin:0 auto;
+    display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:start;
+  }
+  .proof-grid h2{
+    font-family:'Playfair Display',serif;font-weight:500;
+    font-size:clamp(40px,5vw,80px);
+    line-height:1;letter-spacing:-.025em;margin:18px 0 32px;
+  }
+  .proof-grid h2 em{font-style:italic;color:var(--magenta)}
+  .proof-grid .body p{color:#cfc8bb;font-size:17px;line-height:1.7;margin:0 0 18px;max-width:540px}
+  .proof-grid .body a{color:var(--magenta-2);border-bottom:1px solid var(--magenta);padding-bottom:1px}
+  .proof .right{position:relative}
+  .proof .right .ph{aspect-ratio:4/5}
+  .proof .right .stat-overlay{
+    position:absolute;left:-32px;bottom:-32px;
+    background:var(--magenta);color:#fff;
+    padding:32px;max-width:280px;
+  }
+  .proof .right .stat-overlay .n{
+    font-family:'Playfair Display',serif;font-weight:600;font-size:80px;
+    line-height:.9;letter-spacing:-.03em;
+  }
+  .proof .right .stat-overlay .l{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:10px;
+    letter-spacing:.24em;text-transform:uppercase;margin-top:14px;
+  }
+
+  .proof-numbers{
+    max-width:1480px;margin:96px auto 0;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid var(--rule-strong);
+  }
+  .proof-numbers .n{
+    padding:32px 24px 0 0;border-right:1px solid var(--rule);
+  }
+  .proof-numbers .n:last-child{border-right:0}
+  .proof-numbers .n:not(:first-child){padding-left:24px}
+  .proof-numbers .num{
+    font-family:'Playfair Display',serif;font-weight:600;
+    font-size:clamp(48px,5.6vw,84px);
+    line-height:.94;letter-spacing:-.025em;
+  }
+  .proof-numbers .num.gold{
+    background:linear-gradient(180deg,var(--gold-2),var(--gold) 50%,var(--gold-3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .proof-numbers .num.magenta{color:var(--magenta)}
+  .proof-numbers .lab{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:10px;
+    letter-spacing:.24em;text-transform:uppercase;color:#9d9485;margin-top:14px;line-height:1.6;
+  }
+
+  /* ─── SWAP Parties — image-bg overlay ─────────────────── */
+  .parties{
+    position:relative;min-height:80vh;
+    padding:140px 32px;
+    background:
+      linear-gradient(to right, rgba(10,10,10,.92), rgba(10,10,10,.4) 50%, rgba(10,10,10,0)),
+      radial-gradient(80% 80% at 80% 50%, rgba(214,22,139,.4), transparent 70%),
+      repeating-linear-gradient(135deg,rgba(245,239,230,.04) 0 14px,rgba(245,239,230,.02) 14px 28px),
+      #14080d;
+    overflow:hidden;
+  }
+  .parties-inner{max-width:1480px;margin:0 auto}
+  .parties .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px}
+  .parties h2{
+    font-family:'Playfair Display',serif;font-weight:500;
+    font-size:clamp(64px,10vw,180px);
+    line-height:.86;letter-spacing:-.04em;
+    max-width:900px;
+  }
+  .parties h2 em{font-style:italic;color:var(--magenta)}
+  .parties h2 .script{
+    font-family:'Pinyon Script',cursive;font-style:normal;font-weight:400;
+    background:linear-gradient(180deg,var(--gold-2),var(--gold) 50%,var(--gold-3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    font-size:.7em;
+  }
+  .parties .specs{
+    display:grid;grid-template-columns:repeat(4,auto);gap:0;
+    border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);
+    margin-top:32px;
+  }
+  .parties .specs .s{
+    padding:24px 32px;border-right:1px solid var(--rule);
+  }
+  .parties .specs .s:last-child{border-right:0}
+  .parties .specs .lab{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:10px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--magenta-2);
+  }
+  .parties .specs .val{
+    font-family:'Playfair Display',serif;font-weight:600;font-size:32px;
+    line-height:1;margin-top:8px;letter-spacing:-.01em;
+  }
+  .parties .body{
+    margin-top:32px;max-width:540px;font-size:18px;line-height:1.7;color:#cfc8bb;
+  }
+  .parties .cta{margin-top:32px}
+
+  /* ─── Founder profile ─────────────────────────────────── */
+  .founder{padding:140px 32px;background:var(--black)}
+  .founder-inner{
+    max-width:1480px;margin:0 auto;
+    display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start;
+  }
+  .founder figure{margin:0;position:relative}
+  .founder figure .ph{aspect-ratio:4/5}
+  .founder figure .badge{
+    position:absolute;left:-24px;top:-24px;
+    background:linear-gradient(135deg,var(--gold-2),var(--gold) 50%,var(--gold-3));
+    color:var(--black);
+    padding:14px 18px;
+    font-family:'Inter',sans-serif;font-weight:800;font-size:10px;
+    letter-spacing:.24em;text-transform:uppercase;
+    transform:rotate(-4deg);
+  }
+  .founder figure figcaption{
+    margin-top:18px;
+    font-family:'Inter',sans-serif;font-weight:600;font-size:11px;
+    letter-spacing:.24em;text-transform:uppercase;color:#9d9485;
+  }
+  .founder h2{
+    font-family:'Playfair Display',serif;font-weight:500;
+    font-size:clamp(40px,5.4vw,84px);
+    line-height:.96;letter-spacing:-.03em;margin:24px 0 32px;
+  }
+  .founder h2 em{font-style:italic;color:var(--magenta)}
+  .founder .body p{color:#cfc8bb;font-size:17px;line-height:1.7;margin:0 0 18px;max-width:560px}
+  .founder .quote{
+    margin-top:32px;padding:32px;
+    border:1px solid var(--gold);
+    background:linear-gradient(135deg,rgba(201,162,76,.08),transparent);
+    position:relative;
+  }
+  .founder .quote::before{
+    content:"";position:absolute;top:-1px;left:-1px;width:48px;height:1px;background:var(--magenta);
+  }
+  .founder .quote q{
+    quotes:none;
+    font-family:'Playfair Display',serif;font-style:italic;font-weight:500;
+    font-size:26px;line-height:1.3;color:var(--ivory);display:block;
+  }
+  .founder .quote q::before{content:"“"}
+  .founder .quote q::after{content:"”"}
+  .founder .quote .who{
+    margin-top:14px;font-family:'Inter',sans-serif;font-weight:700;font-size:10px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--gold-2);
+  }
+  .founder .traits{
+    margin-top:32px;display:grid;grid-template-columns:1fr 1fr;
+    border-top:1px solid var(--rule);
+  }
+  .founder .traits .t{padding:20px 0;border-bottom:1px solid var(--rule)}
+  .founder .traits .t:nth-child(odd){padding-right:24px;border-right:1px solid var(--rule)}
+  .founder .traits .t:nth-child(even){padding-left:24px}
+  .founder .traits .lab{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:10px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--gold-2);
+  }
+  .founder .traits .val{
+    font-family:'Playfair Display',serif;font-weight:500;font-size:20px;margin-top:6px;line-height:1.2;
+  }
+
+  /* ─── Opportunity — magenta block ─────────────────────── */
+  .opportunity{
+    padding:140px 32px;
+    background:var(--magenta);color:var(--ivory);
+    border-top:2px solid var(--ivory);border-bottom:2px solid var(--ivory);
+  }
+  .opp-inner{max-width:1480px;margin:0 auto}
+  .opportunity .eyebrow{color:var(--ivory)}
+  .opportunity .eyebrow::before{background:var(--ivory)}
+  .opportunity h2{
+    font-family:'Playfair Display',serif;font-weight:500;
+    font-size:clamp(56px,8vw,140px);
+    line-height:.92;letter-spacing:-.035em;margin:24px 0 0;
+  }
+  .opportunity h2 em{font-style:italic}
+  .opp-range{
+    margin-top:64px;display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:end;
+    padding-bottom:32px;border-bottom:2px solid var(--ivory);
+  }
+  .opp-range .total{
+    font-family:'Playfair Display',serif;font-weight:600;
+    font-size:clamp(56px,8vw,140px);line-height:.94;letter-spacing:-.035em;
+  }
+  .opp-range .deck{
+    font-family:'Playfair Display',serif;font-style:italic;font-size:20px;
+    line-height:1.45;max-width:380px;color:#fce4f0;
+  }
+  table.unit{
+    width:100%;border-collapse:collapse;margin-top:48px;
+    font-size:15px;color:var(--ivory);
+  }
+  table.unit thead th{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:10px;
+    letter-spacing:.24em;text-transform:uppercase;color:#fce4f0;
+    text-align:left;padding:18px 0;border-bottom:2px solid var(--ivory);
+  }
+  table.unit thead th.r, table.unit td.r{text-align:right}
+  table.unit td{
+    padding:24px 0;border-bottom:1px solid rgba(245,239,230,.3);vertical-align:top;
+  }
+  table.unit td:first-child{
+    font-family:'Playfair Display',serif;font-weight:500;font-size:22px;
+  }
+  table.unit td.note{font-size:14px;color:#fce4f0;font-family:'Inter',sans-serif;font-weight:400}
+  table.unit td.r{
+    font-family:'Playfair Display',serif;font-weight:600;font-size:24px;white-space:nowrap;color:var(--ivory);
+  }
+  table.unit tfoot td{
+    border-bottom:0;border-top:2px solid var(--ivory);padding-top:32px;font-size:24px;
+  }
+  table.unit tfoot td.r{
+    font-size:36px;
+    background:linear-gradient(180deg,var(--gold-2),var(--gold) 55%,var(--gold-3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+
+  /* ─── Path — horizontal urgency timeline ──────────────── */
+  .path{padding:140px 32px;background:var(--black)}
+  .path-inner{max-width:1480px;margin:0 auto}
+  .path .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px}
+  .path h2{
+    font-family:'Playfair Display',serif;font-weight:500;
+    font-size:clamp(48px,6.4vw,108px);
+    line-height:.94;letter-spacing:-.03em;margin:24px 0 0;
+  }
+  .path h2 .big{
+    font-family:'Playfair Display',serif;font-weight:700;
+    font-size:1.4em;color:var(--magenta);font-style:italic;
+  }
+  .path-strip{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:0;
+    border-top:2px solid var(--magenta);
+  }
+  .path-strip .step{
+    padding:32px 20px 0 0;position:relative;
+    border-right:1px solid var(--rule);
+  }
+  .path-strip .step:last-child{border-right:0;padding-right:0}
+  .path-strip .step:not(:first-child){padding-left:20px}
+  .path-strip .step .num{
+    font-family:'Playfair Display',serif;font-weight:700;
+    font-size:80px;line-height:.9;letter-spacing:-.04em;color:var(--magenta);
+  }
+  .path-strip .step h4{
+    font-family:'Playfair Display',serif;font-weight:600;
+    font-size:22px;line-height:1.15;margin:14px 0 10px;
+  }
+  .path-strip .step p{
+    font-size:14px;color:#9d9485;line-height:1.55;margin:0;
+  }
+  .path-strip .step .day{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:9px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--gold-2);
+    margin-top:14px;
+  }
+
+  /* ─── Final CTA ─────────────────────────────────────── */
+  .finale{
+    padding:160px 32px;
+    background:
+      radial-gradient(70% 70% at 50% 50%, rgba(214,22,139,.3), transparent 70%),
+      var(--black);
+    text-align:center;
+  }
+  .finale h2{
+    font-family:'Playfair Display',serif;font-weight:500;
+    font-size:clamp(72px,12vw,200px);
+    line-height:.84;letter-spacing:-.045em;margin:24px 0 0;max-width:1300px;margin-inline:auto;
+  }
+  .finale h2 .accent{color:var(--magenta);font-style:italic;font-weight:600}
+  .finale h2 .script{
+    font-family:'Pinyon Script',cursive;font-style:normal;font-weight:400;
+    background:linear-gradient(180deg,var(--gold-2),var(--gold) 50%,var(--gold-3));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    font-size:.78em;
+  }
+  .finale .three{
+    margin-top:80px;max-width:1480px;margin-inline:auto;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:left;
+  }
+  .finale .pathcard{
+    padding:40px 36px;border:1px solid var(--rule);background:var(--black-2);
+    transition:all .15s ease;display:flex;flex-direction:column;
+  }
+  .finale .pathcard:hover{border-color:var(--magenta);transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--magenta)}
+  .finale .pathcard.primary{
+    background:var(--magenta);border-color:var(--magenta);color:#fff;
+  }
+  .finale .pathcard.primary:hover{box-shadow:6px 6px 0 var(--gold)}
+  .finale .pathcard .lab{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:10px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--magenta-2);
+  }
+  .finale .pathcard.primary .lab{color:#fff}
+  .finale .pathcard h3{
+    font-family:'Playfair Display',serif;font-weight:500;
+    font-size:32px;line-height:1.1;margin:14px 0 16px;letter-spacing:-.01em;
+  }
+  .finale .pathcard p{font-size:15px;color:#bdb6a9;line-height:1.6;margin:0 0 28px;flex:1}
+  .finale .pathcard.primary p{color:#fce4f0}
+  .finale .pathcard a{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:11px;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--magenta-2);
+    border-bottom:2px solid var(--magenta);padding-bottom:6px;
+    align-self:flex-start;display:inline-flex;gap:10px;align-items:center;
+    transition:gap .2s ease;
+  }
+  .finale .pathcard.primary a{color:#fff;border-color:#fff}
+  .finale .pathcard a:hover{gap:18px}
+
+  /* ─── Tiers ──────────────────────────────────────────── */
+  .tiers{padding:120px 32px;background:var(--ivory);color:var(--black)}
+  .tiers-inner{max-width:1480px;margin:0 auto}
+  .tiers .head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:24px;margin-bottom:48px}
+  .tiers .eyebrow{color:var(--magenta-deep)}
+  .tiers .eyebrow::before{background:var(--magenta-deep)}
+  .tiers h2{
+    font-family:'Playfair Display',serif;font-weight:500;
+    font-size:clamp(40px,5vw,84px);line-height:.96;letter-spacing:-.025em;margin:18px 0 0;
+  }
+  .tiers .deck{font-size:16px;color:#3a3a3a;max-width:480px;line-height:1.6}
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--black)}
+  .tier{padding:48px 32px;border-right:2px solid var(--black);position:relative}
+  .tier:last-child{border-right:0}
+  .tier.featured{background:var(--black);color:var(--ivory)}
+  .tier.featured::after{
+    content:"MOST POPULAR";position:absolute;top:0;right:0;
+    background:var(--magenta);color:#fff;
+    font-family:'Inter',sans-serif;font-weight:800;font-size:9px;
+    letter-spacing:.24em;padding:6px 12px;
+  }
+  .tier .name{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:11px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--magenta);
+  }
+  .tier.featured .name{color:var(--gold-2)}
+  .tier .price{
+    font-family:'Playfair Display',serif;font-weight:600;
+    font-size:84px;line-height:.95;margin-top:16px;letter-spacing:-.03em;
+  }
+  .tier.featured .price{color:var(--magenta-2)}
+  .tier .price .per{font-size:18px;color:#7a7264;font-weight:400;font-style:italic}
+  .tier p{font-size:14px;color:#3a3a3a;margin:18px 0 0;line-height:1.6}
+  .tier.featured p{color:#cfc8bb}
+
+  /* ─── FAQ ────────────────────────────────────────────── */
+  .faq{padding:140px 32px;background:var(--black)}
+  .faq-inner{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:.7fr 1.3fr;gap:80px;align-items:start}
+  .faq h2{
+    font-family:'Playfair Display',serif;font-weight:500;
+    font-size:clamp(48px,6vw,96px);
+    line-height:.94;letter-spacing:-.025em;margin:18px 0 24px;
+  }
+  .faq .deck{color:#cfc8bb;max-width:380px;font-size:16px;line-height:1.65}
+  .faq-list{}
+  details{
+    border-bottom:1px solid var(--rule);padding:24px 0;transition:padding .2s ease;
+  }
+  details:first-child{border-top:1px solid var(--rule)}
+  details[open]{padding-bottom:36px;background:linear-gradient(90deg,rgba(214,22,139,.04),transparent 60%)}
+  summary{
+    list-style:none;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:flex-start;gap:32px;
+    font-family:'Playfair Display',serif;font-weight:500;font-size:26px;
+    line-height:1.25;letter-spacing:-.005em;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary:hover{color:var(--magenta-2)}
+  summary .plus{
+    flex:0 0 auto;width:18px;height:18px;position:relative;margin-top:8px;
+    transition:transform .3s ease;color:var(--magenta);
+  }
+  summary .plus::before, summary .plus::after{content:"";position:absolute;background:currentColor}
+  summary .plus::before{top:50%;left:0;right:0;height:2px}
+  summary .plus::after{left:50%;top:0;bottom:0;width:2px}
+  details[open] summary .plus{transform:rotate(45deg)}
+  details .ans{margin-top:18px;color:#bdb6a9;font-size:16px;line-height:1.7;max-width:680px}
+
+  /* ─── Footer ─────────────────────────────────────────── */
+  footer.site{
+    background:var(--black);color:#9d9485;
+    border-top:1px solid var(--rule);padding:80px 32px 32px;
+  }
+  .foot-inner{max-width:1480px;margin:0 auto}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
+  .foot-grid h5{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:10px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--magenta-2);margin:0 0 18px;
+  }
+  .foot-grid a{display:block;font-size:14px;color:#c5beb1;padding:6px 0;transition:color .2s ease}
+  .foot-grid a:hover{color:var(--magenta-2)}
+  .foot-grid p{margin:0 0 12px;font-size:14px;color:#9d9485;max-width:380px}
+  .foot-bot{
+    margin-top:64px;padding-top:24px;border-top:1px solid var(--rule);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;
+    font-family:'Inter',sans-serif;font-weight:600;font-size:10px;
+    letter-spacing:.22em;text-transform:uppercase;color:#6a6258;
+  }
+
+  /* ─── Animations — sharp ─────────────────────────────── */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal-x{opacity:0;transform:translateX(-24px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
+  .reveal-x.in{opacity:1;transform:none}
+  .img-scale{overflow:hidden}
+  .img-scale .placeholder{transform:scale(1.05);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+  .img-scale.in .placeholder{transform:scale(1)}
+
+  /* — split-line headline reveal —
+     Use clip-path mask instead of overflow:hidden so descenders & ascenders
+     aren't clipped after the reveal. The mask animates to fully open. */
+  .split-line{display:block;clip-path:inset(-2% -10% 100% -10%);transition:clip-path .9s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0ms)}
+  .split-line.in{clip-path:inset(-30% -10% -30% -10%)}
+  .split-line > span{
+    display:inline-block;transform:translateY(60%) skewY(6deg);
+    transition:transform .9s cubic-bezier(.2,.8,.2,1);
+    transition-delay:var(--d,0ms);
+    will-change:transform;
+  }
+  .split-line.in > span{transform:translateY(0) skewY(0)}
+
+  /* — block-level multi-line headline (h2) reveal — */
+  .split-line-h .line{display:block;clip-path:inset(-2% -10% 100% -10%);line-height:inherit;transition:clip-path .9s cubic-bezier(.2,.8,.2,1)}
+  .split-line-h .line > span{
+    display:inline-block;transform:translateY(60%);
+    transition:transform .9s cubic-bezier(.2,.8,.2,1);
+    will-change:transform;
+  }
+  .split-line-h.in .line{clip-path:inset(-30% -10% -30% -10%)}
+  .split-line-h.in .line:nth-child(1){transition-delay:0ms}
+  .split-line-h.in .line:nth-child(1) > span{transform:translateY(0);transition-delay:0ms}
+  .split-line-h.in .line:nth-child(2){transition-delay:120ms}
+  .split-line-h.in .line:nth-child(2) > span{transform:translateY(0);transition-delay:120ms}
+  .split-line-h.in .line:nth-child(3){transition-delay:240ms}
+  .split-line-h.in .line:nth-child(3) > span{transform:translateY(0);transition-delay:240ms}
+
+  /* — letter-stagger reveal (for short headlines) — */
+  .letter-stagger .ltr{
+    display:inline-block;opacity:0;transform:translateY(60%);
+    transition:opacity .5s ease-out, transform .7s cubic-bezier(.2,.8,.2,1);
+    transition-delay:calc(var(--i,0)*40ms);
+  }
+  .letter-stagger.in .ltr{opacity:1;transform:none}
+
+  /* — animated counter — */
+  .counter{display:inline-block}
+  .counter[data-running="1"]{font-variant-numeric:tabular-nums}
+
+  /* — scroll progress bar (top) — */
+  .scroll-progress{
+    position:fixed;top:0;left:0;height:2px;width:0%;z-index:90;
+    background:linear-gradient(90deg,var(--magenta),var(--gold-2));
+    transition:width .08s linear;pointer-events:none;
+  }
+
+  /* — section progress dots (right side) — */
+  .nav-dots{
+    position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:80;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .nav-dots a{
+    width:8px;height:8px;border:1px solid var(--rule-strong);border-radius:50%;
+    transition:all .25s ease;display:block;position:relative;
+  }
+  .nav-dots a:hover{border-color:var(--magenta-2);transform:scale(1.4)}
+  .nav-dots a.active{background:var(--magenta);border-color:var(--magenta);box-shadow:0 0 18px rgba(214,22,139,.6)}
+  .nav-dots a span{
+    position:absolute;right:18px;top:50%;transform:translate(-8px,-50%);
+    font-family:'Inter',sans-serif;font-weight:700;font-size:9px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--ivory);
+    background:var(--magenta);padding:5px 9px;white-space:nowrap;
+    opacity:0;pointer-events:none;transition:all .25s ease;
+  }
+  .nav-dots a:hover span{opacity:1;transform:translate(0,-50%)}
+  @media (max-width:1100px){.nav-dots{display:none}}
+
+  /* — magnetic / stretchy CTA — */
+  .btn{position:relative;overflow:hidden;will-change:transform}
+  .btn-primary::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);
+    transform:translateX(-100%);transition:transform .6s cubic-bezier(.2,.8,.2,1);
+    pointer-events:none;
+  }
+  .btn-primary:hover::before{transform:translateX(100%)}
+
+  /* — hero background drift — */
+  .hero{background-size:140% 140%;animation:bgDrift 24s ease-in-out infinite alternate}
+  @keyframes bgDrift{
+    0%{background-position:0% 0%}
+    100%{background-position:30% 40%}
+  }
+
+  /* — hero stamp wobble — */
+  .hero-image .stamp{
+    animation:stampWobble 4s ease-in-out infinite;transform-origin:center;
+  }
+  @keyframes stampWobble{
+    0%,100%{transform:rotate(4deg) scale(1)}
+    50%{transform:rotate(-2deg) scale(1.04)}
+  }
+
+  /* — hero image parallax (driven by JS via --py) — */
+  .hero-image .ph-main{
+    transform:translateY(calc(var(--py,0) * -1px));
+    transition:transform .15s linear;
+  }
+  .hero-image .ph-2{
+    transform:translateY(calc(var(--py,0) * .4px));
+    transition:transform .15s linear;
+  }
+
+  /* — A/B/C grading hover lift — */
+  .grading .grade{transition:transform .35s cubic-bezier(.2,.8,.2,1), background-color .35s ease}
+  .grading .grade:hover{transform:translateY(-6px)}
+  .grading .grade .letter{
+    transition:transform .55s cubic-bezier(.2,.8,.2,1), letter-spacing .55s ease;
+    display:inline-block;
+  }
+  .grading .grade:hover .letter{transform:translateY(-4px) scale(1.04);letter-spacing:-.07em}
+
+  /* — points-flow arrow draw — */
+  .points-flow .step::after{
+    transform:translateY(-50%) translateX(-8px);opacity:0;
+    transition:transform .6s cubic-bezier(.2,.8,.2,1) .15s, opacity .4s ease .15s;
+  }
+  .points-flow.in .step::after{transform:translateY(-50%) translateX(0);opacity:1}
+
+  /* — proof-hero number sweep — */
+  .proof-hero .massive{
+    background:linear-gradient(90deg, var(--ivory) 0%, var(--ivory) 50%, var(--magenta) 50%, var(--magenta) 100%);
+    background-size:200% 100%;background-position:100% 0;
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    transition:background-position 1.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .proof-hero.in .massive{background-position:0 0}
+  .proof-hero .massive .plus{
+    -webkit-text-fill-color:var(--magenta);
+  }
+
+  /* — proof stat overlay slide — */
+  .proof .right .stat-overlay{
+    transform:translate(-12px,12px);opacity:0;
+    transition:transform .7s cubic-bezier(.2,.8,.2,1) .35s, opacity .7s ease .35s;
+  }
+  .proof .right.in .stat-overlay{transform:translate(0,0);opacity:1}
+
+  /* — opportunity table rows stagger — */
+  table.unit tbody tr{
+    opacity:0;transform:translateY(8px);
+    transition:opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1);
+  }
+  table.unit.in tbody tr{opacity:1;transform:none}
+  table.unit.in tbody tr:nth-child(1){transition-delay:.05s}
+  table.unit.in tbody tr:nth-child(2){transition-delay:.15s}
+  table.unit.in tbody tr:nth-child(3){transition-delay:.25s}
+  table.unit.in tbody tr:nth-child(4){transition-delay:.35s}
+  table.unit.in tbody tr:nth-child(5){transition-delay:.45s}
+  table.unit tfoot tr{opacity:0;transform:translateY(8px);transition:opacity .6s ease .6s, transform .6s cubic-bezier(.2,.8,.2,1) .6s}
+  table.unit.in tfoot tr{opacity:1;transform:none}
+
+  /* — path-strip number count-up emphasis — */
+  .path-strip .step .num{
+    transition:transform .8s cubic-bezier(.2,.8,.2,1), color .3s ease;
+    display:inline-block;transform:translateY(20px);opacity:0;
+  }
+  .path-strip.in .step .num{transform:translateY(0);opacity:1}
+  .path-strip.in .step:nth-child(1) .num{transition-delay:.05s}
+  .path-strip.in .step:nth-child(2) .num{transition-delay:.15s}
+  .path-strip.in .step:nth-child(3) .num{transition-delay:.25s}
+  .path-strip.in .step:nth-child(4) .num{transition-delay:.35s}
+  .path-strip.in .step:nth-child(5) .num{transition-delay:.45s}
+  .path-strip.in .step:nth-child(6) .num{transition-delay:.55s}
+  .path-strip .step:hover .num{color:var(--gold-2)}
+
+  /* — finale path cards stagger — */
+  .finale .three .pathcard{
+    opacity:0;transform:translateY(20px) scale(.98);
+    transition:opacity .6s ease, transform .7s cubic-bezier(.2,.8,.2,1), border-color .15s ease, box-shadow .15s ease;
+  }
+  .finale .three.in .pathcard{opacity:1;transform:none}
+  .finale .three.in .pathcard:nth-child(1){transition-delay:.05s}
+  .finale .three.in .pathcard:nth-child(2){transition-delay:.18s}
+  .finale .three.in .pathcard:nth-child(3){transition-delay:.31s}
+
+  /* — tier hover — */
+  .tier{transition:background-color .3s ease, transform .35s cubic-bezier(.2,.8,.2,1)}
+  .tier:not(.featured):hover{background:var(--blush);transform:translateY(-4px)}
+  .tier .price{display:inline-block;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+  .tier:hover .price{transform:scale(1.04)}
+
+  /* — FAQ summary hover underline — */
+  details summary{position:relative}
+  details summary > span:nth-child(1){
+    background-image:linear-gradient(var(--magenta-2),var(--magenta-2));
+    background-size:0% 1px;background-repeat:no-repeat;background-position:0 100%;
+    transition:background-size .35s ease;padding-bottom:2px;
+  }
+  details summary:hover > span:nth-child(1){background-size:100% 1px}
+
+  /* — live dot widen on scroll near apply — */
+  .nav-cta{position:relative;overflow:hidden}
+  .nav-cta::after{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:0;
+    background:var(--gold);transition:width .3s cubic-bezier(.2,.8,.2,1);z-index:-1;
+  }
+  .nav-cta:hover{color:var(--black)}
+  .nav-cta:hover::after{width:100%}
+
+  /* — section enter/exit fades — */
+  section{position:relative}
+  section::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,var(--black) 0%, transparent 8%, transparent 92%, var(--black) 100%);
+    opacity:0;transition:opacity .6s ease;
+  }
+
+  /* — reduce motion — */
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+    .marquee-track{animation:none}
+    .hero{animation:none}
+  }
+
+  /* ─── Mobile ─────────────────────────────────────────── */
+  @media (max-width:768px){
+    .wrap, .full{padding:0 18px}
+    nav.links{display:none}
+    .live{display:none}
+    .menu-btn{display:block}
+    .nav-cta{padding:10px 14px;font-size:10px}
+    .hero{padding:48px 18px 32px;min-height:auto}
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .hero-image{min-height:420px}
+    .hero-strip{grid-template-columns:1fr 1fr;gap:18px;padding:18px}
+    .marquee-track{font-size:22px}
+    .cultural{padding:80px 18px}
+    .cultural-inner{grid-template-columns:1fr;gap:32px}
+    .model, .parties, .founder, .opportunity, .path, .finale, .tiers, .faq{padding:80px 18px}
+    .grading, .points-flow, .tier-grid, .finale .three, .path-strip, .proof-numbers{grid-template-columns:1fr}
+    .grading .grade, .points-flow .step, .tier, .finale .pathcard, .path-strip .step, .proof-numbers .n{
+      border-right:0;border-bottom:1px solid var(--rule);padding:24px 0 !important;
+    }
+    .tier{border-bottom:2px solid var(--black)}
+    .tier:last-child{border-bottom:0}
+    .points-flow .step::after{display:none}
+    .proof-detail{padding:64px 18px}
+    .proof-grid{grid-template-columns:1fr;gap:48px}
+    .proof .right .stat-overlay{position:relative;left:auto;bottom:auto;margin-top:-32px;max-width:none}
+    .proof-numbers{margin-top:48px}
+    .founder-inner{grid-template-columns:1fr;gap:48px}
+    .opp-range{grid-template-columns:1fr;gap:18px}
+    table.unit thead{display:none}
+    table.unit, table.unit tbody, table.unit tfoot, table.unit tr, table.unit td{display:block;width:100%}
+    table.unit td{padding:12px 0;border-bottom:1px solid rgba(245,239,230,.2)}
+    table.unit td:first-child{font-size:18px;padding-bottom:4px;border-bottom:0}
+    table.unit td.note{padding-top:0;border-bottom:0}
+    table.unit td.r{text-align:left;font-size:18px}
+    table.unit tfoot td{padding:18px 0}
+    table.unit tfoot td.r{font-size:28px}
+    .faq-inner{grid-template-columns:1fr;gap:32px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<aside class="nav-dots" aria-hidden="true">
+  <a href="#hero" class="active" data-section="hero"><span>Hero</span></a>
+  <a href="#cultural" data-section="cultural"><span>The 80%</span></a>
+  <a href="#model" data-section="model"><span>The Model</span></a>
+  <a href="#proof" data-section="proof"><span>Billings</span></a>
+  <a href="#parties" data-section="parties"><span>SWAP Parties</span></a>
+  <a href="#founder" data-section="founder"><span>Founder</span></a>
+  <a href="#opportunity" data-section="opportunity"><span>Opportunity</span></a>
+  <a href="#path" data-section="path"><span>The Path</span></a>
+  <a href="#apply" data-section="apply"><span>Apply</span></a>
+  <a href="#faq" data-section="faq"><span>FAQ</span></a>
+</aside>
+
+<header class="site">
+  <div class="nav">
+    <a href="#" class="logo" aria-label="Switch Society">
+      <span class="row1">SWITCH</span>
+      <span class="row2">Society</span>
+      <span class="row3">CLOTHING&nbsp;&nbsp;SWAP</span>
+    </a>
+    <nav class="links">
+      <a href="#model">Model</a>
+      <a href="#proof">Billings</a>
+      <a href="#parties">Parties</a>
+      <a href="#opportunity">Opportunity</a>
+      <a href="#path">Path</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-right">
+      <span class="live"><span class="dot"></span>9 / 14 territories open</span>
+      <a href="#apply" class="nav-cta">Apply →</a>
+      <button class="menu-btn" aria-label="Menu">≡</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid">
+    <div class="reveal">
+      <span class="eyebrow">Founder Cohort · 2026</span>
+      <h1>
+        <span class="split-line"><span style="--d:0ms">Membership.</span></span>
+        <span class="split-line"><span style="--d:120ms">Not <span class="accent">merchandise.</span></span></span>
+        <span class="split-line"><span style="--d:240ms" class="script">Society.</span></span>
+      </h1>
+      <p class="deck">A points-based fashion <em class="society-serif">Society</em> of secondhand, founded in Billings, Montana. We're awarding fourteen founder territories to the women building the next generation of conscious luxury retail.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#apply">Apply for a Founder Territory <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="#brief">Founder Brief</a>
+      </div>
+    </div>
+    <div class="hero-image reveal img-scale">
+      <div class="placeholder magenta ph-main"><span class="label">Editorial · Member · 35mm · magenta gel</span></div>
+      <div class="placeholder ph-2"><span class="label">Detail · Rack · Saturday A-grade drop</span></div>
+      <div class="stamp">SS / 2026</div>
+    </div>
+  </div>
+
+  <div class="hero-strip reveal">
+    <div class="col"><div class="num">319,799+</div><div class="lab">Items swapped<br/>since 2023</div></div>
+    <div class="col"><div class="num">769</div><div class="lab">Paid monthly<br/>members today</div></div>
+    <div class="col"><div class="num"><span class="counter" data-to="3122" data-suffix="+">0</span></div><div class="lab">Facebook community<br/>members</div></div>
+    <div class="col"><div class="num"><span class="counter" data-to="14">0</span></div><div class="lab">Founder territories<br/>opening 2026</div></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Apply now — Founder rate locked for the cohort</span>
+    <span>9 of 14 territories open</span>
+    <span>$75,900 — $135,300 turn-key</span>
+    <span>60-day path to grand opening</span>
+    <span>Apply now — Founder rate locked for the cohort</span>
+    <span>9 of 14 territories open</span>
+    <span>$75,900 — $135,300 turn-key</span>
+    <span>60-day path to grand opening</span>
+  </div>
+</div>
+
+<!-- CULTURAL -->
+<section class="cultural" id="cultural">
+  <div class="cultural-inner">
+    <div class="reveal">
+      <div class="big-num"><span class="pct"><span class="counter" data-to="80" data-suffix="%">0</span></span></div>
+    </div>
+    <div class="right reveal">
+      <span class="eyebrow">A Cultural Reckoning</span>
+      <h2 class="split-line-h"><span class="line"><span>Eighty per&nbsp;cent of an American</span></span> <span class="line"><span>closet goes <em class="society-serif">unworn</em>.</span></span></h2>
+      <p>The garments hang. The credit card line item lengthens. The closet bulges. The wardrobe shrinks. The arithmetic of buying and discarding has finally stopped working — and the women doing it have done the math.</p>
+      <p>Switch <em class="society-serif">Society</em> is the format that finally makes refreshing a wardrobe feel like a privilege, not a penance. Membership swap doesn't compete with retail. It replaces it. See the live consumer site at <a href="https://switchsociety.org" target="_blank" rel="noopener">switchsociety.org</a>.</p>
+      <div class="source">2024 Wardrobe Audit · cited by NPR &amp; The New York Times</div>
+    </div>
+  </div>
+</section>
+
+<!-- THE MODEL -->
+<section class="model" id="model">
+  <div class="model-inner">
+    <div class="head reveal">
+      <div>
+        <span class="eyebrow">The Model — Points-Based Economy</span>
+        <h2 class="split-line-h"><span class="line"><span>Members bring it.</span></span><span class="line"><span>We <em>grade</em> it.</span></span><span class="line"><span>Points buy it.</span></span></h2>
+      </div>
+      <p class="deck">No flat-rate buffet. No thrift bin. Garments are graded <strong>A, B, or C</strong> by brand and condition. Members earn points on intake and spend them like currency on what's currently in the room.</p>
+    </div>
+
+    <div class="grading">
+      <div class="grade grade-a reveal">
+        <div class="lab">Grade A · Premium</div>
+        <div class="letter">A</div>
+        <h3>Designer, archive, near-new.</h3>
+        <p>Khaite, Toteme, The Row, Reformation — current season, no visible wear. The reason members open the door at noon on Saturday.</p>
+        <div class="pts"><span>Earn / Spend</span><span class="pn">120 — 240</span></div>
+      </div>
+      <div class="grade grade-b reveal">
+        <div class="lab">Grade B · Considered</div>
+        <div class="letter">B</div>
+        <h3>Contemporary, well-loved, well-kept.</h3>
+        <p>Madewell, J.Crew, Aritzia, vintage with story but no flaws. The deepest racks — where most members spend most months.</p>
+        <div class="pts"><span>Earn / Spend</span><span class="pn">40 — 100</span></div>
+      </div>
+      <div class="grade grade-c reveal">
+        <div class="lab">Grade C · Foundation</div>
+        <div class="letter">C</div>
+        <h3>Everyday basics, in good order.</h3>
+        <p>Tees, denim, knits — pieces that earn their keep. A member who walks in for one rarely walks out with only one.</p>
+        <div class="pts"><span>Earn / Spend</span><span class="pn">10 — 30</span></div>
+      </div>
+    </div>
+
+    <div class="points-flow reveal">
+      <div class="step"><div class="num">01</div><h4>Bring</h4><p>Member deposits garments at intake.</p></div>
+      <div class="step"><div class="num">02</div><h4>Grade</h4><p>Staff grades each piece A, B, or C.</p></div>
+      <div class="step"><div class="num">03</div><h4>Earn</h4><p>Points hit member account in minutes.</p></div>
+      <div class="step"><div class="num">04</div><h4>Spend</h4><p>Points purchase any item, any grade, any rack.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof" id="proof">
+  <div class="proof-hero reveal">
+    <div class="lead">Proof — One store. Three years. Real numbers.</div>
+    <div class="massive"><span class="counter" data-to="319799">0</span><span class="plus">+</span></div>
+    <div class="cap">Swap items processed since 2023, in a town of 117,000.</div>
+  </div>
+
+  <div class="proof-detail">
+    <div class="proof-grid">
+      <div class="reveal">
+        <span class="eyebrow gold">The Flagship · Billings, MT</span>
+        <h2>One small <em>room</em> on Montana Avenue.</h2>
+        <div class="body">
+          <p>Switch <em class="society-serif">Society</em> opened in 2023, 1,400 sqft on Montana Avenue. There is one store. The waitlist is real. The numbers below are the only numbers the franchise has — because there is only one room, and we counted carefully.</p>
+          <p>Three years in, the room has processed 319,799+ garments, runs a 3,122-member Facebook community, and carries 769 paying members at $35–$75/month. Live proof at <a href="https://switchsociety.org" target="_blank" rel="noopener">switchsociety.org</a>.</p>
+        </div>
+      </div>
+      <div class="right reveal img-scale">
+        <div class="placeholder ph"><span class="label">Interior · Saturday · 4pm</span></div>
+        <div class="stat-overlay">
+          <div class="n">769</div>
+          <div class="l">Paid monthly members</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proof-numbers">
+      <div class="n reveal"><div class="num magenta"><span class="counter" data-to="319799" data-suffix="+">0</span></div><div class="lab">Items swapped<br/>since 2023</div></div>
+      <div class="n reveal"><div class="num gold"><span class="counter" data-to="3122" data-suffix="+">0</span></div><div class="lab">Facebook community<br/>members</div></div>
+      <div class="n reveal"><div class="num gold"><span class="counter" data-to="769">0</span></div><div class="lab">Paid monthly<br/>members</div></div>
+      <div class="n reveal"><div class="num gold"><span class="counter" data-to="117" data-suffix="K">0</span></div><div class="lab">Population of the<br/>town it lives in</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTIES -->
+<section class="parties" id="parties">
+  <div class="parties-inner">
+    <span class="eyebrow reveal">The Marquee Experience</span>
+    <h2 class="reveal">Private <em>SWAP</em> <span class="script">Parties.</span></h2>
+
+    <div class="specs reveal">
+      <div class="s"><div class="lab">Duration</div><div class="val">4 hours</div></div>
+      <div class="s"><div class="lab">Capacity</div><div class="val">10 — 15 women</div></div>
+      <div class="s"><div class="lab">Includes</div><div class="val">Wine · stylist · music</div></div>
+      <div class="s"><div class="lab">Cadence</div><div class="val">~8 / month / store</div></div>
+    </div>
+
+    <p class="body reveal">Four hours. Ten to fifteen women. Wine in stemware, a curated playlist, a personal shopper assigned to the room. Members and guests bring closets to swap in private; new members are made on the spot. The highest-margin product in the model — and the night that makes the membership obvious. It's the closest thing the brand has to a public ritual, and it's the reason a quiet store in Billings has a waitlist before it has marketing.</p>
+
+    <div class="cta reveal">
+      <a class="btn btn-primary" href="#apply">Bring SWAP Parties to your city <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder" id="founder">
+  <div class="founder-inner">
+    <figure class="reveal img-scale">
+      <div class="placeholder ph"><span class="label">Portrait · Emily Petroff · Billings, MT</span></div>
+      <div class="badge">Founder № 001</div>
+      <figcaption>Emily Petroff · Founder, est. 2023 · Billings, Montana</figcaption>
+    </figure>
+    <div class="reveal">
+      <span class="eyebrow gold">The Founder</span>
+      <h2>Emily Petroff didn't want a clothing store. She wanted a <em>room</em>.</h2>
+      <div class="body">
+        <p>She started in 2023 in 1,400 square feet on Montana Avenue. The first members were the women in her own group chat. The second members were their sisters. By month four, the door was wedged open most afternoons because the bell could not keep up.</p>
+        <p>Three years later, the room has processed 319,799+ garments and built the only operating template the franchise will ever issue. Emily still works the floor on Wednesdays. The franchise programme is not an exit — it is an invitation.</p>
+      </div>
+      <div class="quote">
+        <q>I did not set out to build a franchise. I built a room I wanted to be in, and other women asked how to bring it home.</q>
+        <div class="who">— Emily Petroff · Founder · Billings, MT</div>
+      </div>
+      <div class="traits">
+        <div class="t"><div class="lab">Capital</div><div class="val">$80–150K liquid</div></div>
+        <div class="t"><div class="lab">Profile</div><div class="val">Owner-operator</div></div>
+        <div class="t"><div class="lab">Background</div><div class="val">Hospitality, fashion, stylist</div></div>
+        <div class="t"><div class="lab">Term</div><div class="val">10y + 5y renewals</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITY -->
+<section class="opportunity" id="opportunity">
+  <div class="opp-inner">
+    <span class="eyebrow reveal">The Opportunity</span>
+    <h2 class="reveal">Unit <em>economics.</em></h2>
+
+    <div class="opp-range reveal">
+      <div class="total">$75,900<br/>— $135,300</div>
+      <p class="deck">The total turn-key investment range. The fee structure honours the founder cohort. The math is plain on the page.</p>
+    </div>
+
+    <table class="unit reveal">
+      <thead>
+        <tr><th>Line item</th><th>Detail</th><th class="r">Low</th><th class="r">High</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Initial franchise fee</td><td class="note">Founder rate · first 14 territories</td><td class="r">$28,500</td><td class="r">$28,500</td></tr>
+        <tr><td>Buildout &amp; fixtures</td><td class="note">1,200–1,800 sqft, racks, party room</td><td class="r">$22,400</td><td class="r">$54,800</td></tr>
+        <tr><td>Technology &amp; brand kit</td><td class="note">Member platform, signage, opening collateral</td><td class="r">$8,200</td><td class="r">$12,400</td></tr>
+        <tr><td>Pre-opening marketing</td><td class="note">Founding-100 campaign &amp; launch events</td><td class="r">$6,800</td><td class="r">$14,200</td></tr>
+        <tr><td>Working capital · 90 days</td><td class="note">Rent, payroll, operating reserve</td><td class="r">$10,000</td><td class="r">$25,400</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td>Total investment</td><td class="note">Royalty 6% · Marketing 1.5%</td><td class="r">$75,900</td><td class="r">$135,300</td></tr>
+      </tfoot>
+    </table>
+  </div>
+</section>
+
+<!-- PATH -->
+<section class="path" id="path">
+  <div class="path-inner">
+    <div class="head">
+      <div class="reveal">
+        <span class="eyebrow gold">The Path</span>
+        <h2>From inquiry to grand opening, in <span class="big">60</span> days.</h2>
+      </div>
+    </div>
+
+    <div class="path-strip">
+      <div class="step reveal"><div class="num">01</div><h4>Inquire</h4><p>Short written application — territory, why, timeline.</p><div class="day">Day 0</div></div>
+      <div class="step reveal"><div class="num">02</div><h4>Discovery</h4><p>45-minute call. Model, math, the room.</p><div class="day">Day 3 — 7</div></div>
+      <div class="step reveal"><div class="num">03</div><h4>FDD</h4><p>Disclosure document. 14 days with counsel.</p><div class="day">Day 7 — 21</div></div>
+      <div class="step reveal"><div class="num">04</div><h4>Approval</h4><p>Mutual approval, deposit, territory locked.</p><div class="day">Day 21 — 28</div></div>
+      <div class="step reveal"><div class="num">05</div><h4>Training</h4><p>Two weeks in Billings. All hands, all rooms.</p><div class="day">Day 30 — 45</div></div>
+      <div class="step reveal"><div class="num">06</div><h4>Open</h4><p>Founding-member party. Doors open. We're in your room 90 days.</p><div class="day">Day 60</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINALE -->
+<section class="finale" id="apply">
+  <span class="eyebrow reveal" style="justify-content:center">The Invitation</span>
+  <h2 class="split-line-h"><span class="line"><span>Own the</span></span><span class="line"><span><span class="script">Society</span> in <span class="accent">your city.</span></span></span></h2>
+
+  <div class="three">
+    <div class="pathcard primary reveal">
+      <div class="lab">Path 01 · Talk</div>
+      <h3>Book a discovery call.</h3>
+      <p>Forty-five minutes with the franchise team. Model, territory, timeline — all on the table.</p>
+      <a href="#">Schedule a call <span>→</span></a>
+    </div>
+    <div class="pathcard reveal">
+      <div class="lab">Path 02 · Read</div>
+      <h3>Download the Founder Brief.</h3>
+      <p>28 pages. The model, the math, the founder profile. The deck we send before every call.</p>
+      <a href="#">Get the brief <span>→</span></a>
+    </div>
+    <div class="pathcard reveal">
+      <div class="lab">Path 03 · Watch</div>
+      <h3>Join the waitlist.</h3>
+      <p>For the women who aren't ready this quarter. Quarterly territory drops, sent only to the list.</p>
+      <a href="#">Join the waitlist <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section class="tiers">
+  <div class="tiers-inner">
+    <div class="head reveal">
+      <div>
+        <span class="eyebrow">Membership Tiers — For Reference</span>
+        <h2>What members pay <em>you</em>.</h2>
+      </div>
+      <p class="deck">Three tiers. Members upgrade because the room rewards it — point bonuses, party access, and styling tables are tier-gated.</p>
+    </div>
+
+    <div class="tier-grid">
+      <div class="tier reveal">
+        <div class="name">Tier I · Thrifty</div>
+        <div class="price">$35<span class="per">/mo</span></div>
+        <p>Standard point allotment, in-room swap rights, public party access. The entry point that brings members through the door.</p>
+      </div>
+      <div class="tier featured reveal">
+        <div class="name">Tier II · Sustainability</div>
+        <div class="price">$50<span class="per">/mo</span></div>
+        <p>Bonus monthly points, two stylist appointments, priority on Saturday A-grade drops. The center of gravity — the majority of members.</p>
+      </div>
+      <div class="tier reveal">
+        <div class="name">Tier III · Platinum</div>
+        <div class="price">$75<span class="per">/mo</span></div>
+        <p>Maximum points, archive access, two SWAP Party invitations a quarter. The lowest-churn tier in the model.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="reveal">
+      <span class="eyebrow">Frequently Asked</span>
+      <h2>The detail.</h2>
+      <p class="deck">If a question isn't answered here, it's answered on the call. We don't keep secrets from prospective founders — we keep them from competitors.</p>
+    </div>
+    <div class="faq-list reveal">
+      <details><summary>How is territory defined and protected?<span class="plus"></span></summary><div class="ans">Each territory is a protected radius — typically 8 miles in metro areas, 25 miles in secondary markets — drawn around your trade area. No other Switch <em class="society-serif">Society</em> opens inside that perimeter for the duration of your agreement. Markets above 350,000 households support multi-unit awards.</div></details>
+      <details><summary>What is the royalty structure?<span class="plus"></span></summary><div class="ans">Royalty is 6% of gross membership and ancillary revenue, paid monthly. A 1.5% marketing fund contribution is reinvested into national brand programmes. Founder-rate territories lock these terms for the full initial 10-year term.</div></details>
+      <details><summary>How long is the franchise term?<span class="plus"></span></summary><div class="ans">A 10-year initial term, with two 5-year renewal options at the prevailing renewal fee. The model is designed for compounding tenure — most franchise economics get better in years three through seven, not worse.</div></details>
+      <details><summary>What real estate works for a Society?<span class="plus"></span></summary><div class="ans">1,200–1,800 sqft in a walkable neighbourhood retail block, ground floor, with natural light and back-of-house large enough to support intake, steaming, and the SWAP Party room. We approve every site.</div></details>
+      <details><summary>What financing options exist?<span class="plus"></span></summary><div class="ans">Switch <em class="society-serif">Society</em> is on the SBA Franchise Registry. Most founders finance 50–70% of the project through SBA 7(a). We maintain relationships with three preferred lenders and will introduce you after FDD review.</div></details>
+      <details><summary>What does training include?<span class="plus"></span></summary><div class="ans">Two weeks of in-person training in Billings: floor and intake, garment grading, SWAP Party hosting, the points platform, and the founding-member acquisition playbook. A regional coach is in your room for the first ninety days post-opening.</div></details>
+      <details><summary>How do members earn and spend points?<span class="plus"></span></summary><div class="ans">Members deposit garments at intake; pieces are graded A, B, or C and points are issued accordingly. Points are spent like currency on any other member's items in the room. Monthly subscriptions add a baseline allotment — the floor that keeps the system liquid.</div></details>
+      <details><summary>Do I need fashion or retail experience?<span class="plus"></span></summary><div class="ans">It helps but isn't required. The non-negotiable is taste — a clear point of view on what belongs in the room. We've awarded territories to a former hotelier, a buyer, and a personal stylist, and they have all opened strong.</div></details>
+      <details><summary>Can I be a passive owner?<span class="plus"></span></summary><div class="ans">No. Switch <em class="society-serif">Society</em> is an owner-operator model. The room is a relationship business — members notice when the founder is in it and notice harder when she isn't.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="foot-inner">
+    <div class="foot-grid">
+      <div>
+        <a href="#" class="logo" style="margin-bottom:18px">
+          <span class="row1">SWITCH</span>
+          <span class="row2">Society</span>
+          <span class="row3">CLOTHING&nbsp;&nbsp;SWAP</span>
+        </a>
+        <p>The members-only fashion <em class="society-serif">Society</em> of secondhand. Founded in Billings, Montana, 2023.</p>
+        <p style="color:#6a6258"><a href="https://switchsociety.org" style="border-bottom:1px solid currentColor">switchsociety.org</a></p>
+      </div>
+      <div><h5>Franchise</h5><a href="#model">The model</a><a href="#opportunity">Opportunity</a><a href="#path">The path</a><a href="#faq">FAQ</a></div>
+      <div><h5>Society</h5><a href="https://switchsociety.org">Find a location</a><a href="https://switchsociety.org">Membership</a><a href="#parties">SWAP Parties</a><a href="#model">Points &amp; grading</a></div>
+      <div><h5>Connect</h5><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">Substack</a><a href="mailto:founders@switchsociety.org">founders@switchsociety.org</a></div>
+    </div>
+    <div class="foot-bot">
+      <div>© 2026 Switch Society Holdings, LLC</div>
+      <div>FDD · Privacy · Terms · CA Disclosures</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ─── Reveal observer ─── */
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        // counters
+        if(e.target.classList.contains('counter')){startCounter(e.target)}
+        e.target.querySelectorAll('.counter').forEach(startCounter);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal, .reveal-x, .img-scale, .split-line, .split-line-h, .points-flow, .path-strip, table.unit, .finale .three, .proof-hero, .proof .right').forEach(el=>io.observe(el));
+  document.querySelectorAll('.counter').forEach(el=>io.observe(el));
+
+  /* Above-the-fold safety net: anything already in the viewport at load
+     gets .in immediately, in case the IntersectionObserver callback is
+     delayed past the user's first paint. */
+  requestAnimationFrame(()=>{
+    const vh = window.innerHeight;
+    document.querySelectorAll('.reveal, .reveal-x, .img-scale, .split-line, .split-line-h, .points-flow, .path-strip, .proof-hero').forEach(el=>{
+      const r = el.getBoundingClientRect();
+      if(r.top < vh && r.bottom > 0){
+        el.classList.add('in');
+        el.querySelectorAll('.counter').forEach(startCounter);
+        if(el.classList.contains('counter')) startCounter(el);
+        io.unobserve(el);
+      }
+    });
+  });
+
+  /* ─── Animated counter ─── */
+  function startCounter(el){
+    if(el.dataset.running==="1") return;
+    el.dataset.running="1";
+    const to = parseInt(el.dataset.to,10);
+    const suffix = el.dataset.suffix || "";
+    const dur = Math.min(2400, 900 + Math.log10(Math.max(to,10))*400);
+    const start = performance.now();
+    const fmt = new Intl.NumberFormat('en-US');
+    const tick = (now)=>{
+      const t = Math.min(1,(now-start)/dur);
+      // ease-out-cubic
+      const eased = 1 - Math.pow(1-t,3);
+      const v = Math.round(to*eased);
+      el.textContent = fmt.format(v) + suffix;
+      if(t<1) requestAnimationFrame(tick);
+      else el.textContent = fmt.format(to) + suffix;
+    };
+    requestAnimationFrame(tick);
+  }
+
+  /* ─── Scroll progress bar ─── */
+  const bar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const p = max>0 ? (h.scrollTop / max) * 100 : 0;
+    bar.style.width = p + '%';
+  }
+  updateProgress();
+  document.addEventListener('scroll', updateProgress, {passive:true});
+
+  /* ─── Nav dots active section ─── */
+  const sections = ['hero','cultural','model','proof','parties','founder','opportunity','path','apply','faq']
+    .map(id=>document.getElementById(id)).filter(Boolean);
+  const dotMap = {};
+  document.querySelectorAll('.nav-dots a').forEach(a=>{ dotMap[a.dataset.section]=a; });
+  const sectionIo = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && e.intersectionRatio>0.35){
+        Object.values(dotMap).forEach(d=>d.classList.remove('active'));
+        const dot = dotMap[e.target.id];
+        if(dot) dot.classList.add('active');
+      }
+    });
+  },{threshold:[0.35,0.6]});
+  sections.forEach(s=>sectionIo.observe(s));
+
+  /* ─── Hero parallax (subtle) ─── */
+  const hero = document.getElementById('hero');
+  function heroParallax(){
+    if(!hero) return;
+    const r = hero.getBoundingClientRect();
+    const top = -r.top;
+    const max = hero.offsetHeight;
+    const p = Math.max(0, Math.min(1, top/max));
+    hero.style.setProperty('--py', (p*40).toFixed(2));
+  }
+  heroParallax();
+  document.addEventListener('scroll', heroParallax, {passive:true});
+
+  /* ─── Magnetic CTAs ─── */
+  document.querySelectorAll('.btn-primary, .nav-cta').forEach(btn=>{
+    let raf;
+    btn.addEventListener('mousemove', (e)=>{
+      const r = btn.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width/2;
+      const y = e.clientY - r.top - r.height/2;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(()=>{
+        btn.style.transform = `translate(${x*0.18}px, ${y*0.25}px)`;
+      });
+    });
+    btn.addEventListener('mouseleave', ()=>{
+      cancelAnimationFrame(raf);
+      btn.style.transform = '';
+    });
+  });
+
+  /* ─── Hero stamp click — ripple ─── */
+  document.querySelectorAll('.hero-image .stamp').forEach(s=>{
+    s.style.cursor='pointer';
+    s.addEventListener('click', ()=>{
+      s.animate([
+        {transform:'rotate(4deg) scale(1)'},
+        {transform:'rotate(-12deg) scale(1.3)'},
+        {transform:'rotate(4deg) scale(1)'}
+      ],{duration:600,easing:'cubic-bezier(.2,.8,.2,1)'});
+    });
+  });
+
+  /* ─── Marquee speed-up on hover ─── */
+  const marquee = document.querySelector('.marquee-track');
+  if(marquee){
+    marquee.parentElement.addEventListener('mouseenter', ()=>{ marquee.style.animationDuration='10s'; });
+    marquee.parentElement.addEventListener('mouseleave', ()=>{ marquee.style.animationDuration='28s'; });
+  }
+</script>
+
+
+</body>
+</html>
