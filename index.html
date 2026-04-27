@@ -1027,31 +1027,65 @@
   /* ─── Mobile ─────────────────────────────────────────── */
   @media (max-width:768px){
     .wrap, .full{padding:0 18px}
+
+    /* nav */
+    .nav{grid-template-columns:auto auto;gap:16px;padding:12px 18px}
     nav.links{display:none}
     .live{display:none}
     .menu-btn{display:block}
     .nav-cta{padding:10px 14px;font-size:10px}
+
+    /* hero */
     .hero{padding:48px 18px 32px;min-height:auto}
     .hero-grid{grid-template-columns:1fr;gap:48px}
-    .hero-image{min-height:420px}
-    .hero-strip{grid-template-columns:1fr 1fr;gap:18px;padding:18px}
-    .marquee-track{font-size:22px}
-    .cultural{padding:80px 18px}
-    .cultural-inner{grid-template-columns:1fr;gap:32px}
-    .model, .parties, .founder, .opportunity, .path, .finale, .tiers, .faq{padding:80px 18px}
+    .hero-image{min-height:360px}
+    .hero-strip{grid-template-columns:1fr 1fr;gap:18px;padding:18px 0}
+
+    /* marquee — keep at 12px, override old 22px */
+    .marquee-track{font-size:11px}
+
+    /* cultural */
+    .cultural{padding:64px 18px}
+    .cultural-inner{grid-template-columns:1fr;gap:24px}
+    .cultural .big-num{font-size:clamp(72px,22vw,120px)}
+
+    /* model */
+    .model, .parties, .founder, .opportunity, .path, .finale, .tiers, .faq{padding:64px 18px}
     .grading, .points-flow, .tier-grid, .finale .three, .path-strip, .proof-numbers{grid-template-columns:1fr}
     .grading .grade, .points-flow .step, .tier, .finale .pathcard, .path-strip .step, .proof-numbers .n{
       border-right:0;border-bottom:1px solid var(--rule);padding:24px 0 !important;
     }
+    .grading .letter{font-size:clamp(72px,22vw,120px)}
     .tier{border-bottom:2px solid var(--black)}
     .tier:last-child{border-bottom:0}
     .points-flow .step::after{display:none}
-    .proof-detail{padding:64px 18px}
+
+    /* parties specs — 2×2 on mobile */
+    .parties .specs{grid-template-columns:1fr 1fr}
+    .parties .specs .s{padding:18px 14px}
+
+    /* proof */
+    .proof-hero{padding:56px 18px}
+    .proof-hero .massive{font-size:clamp(60px,18vw,100px)}
+    .proof-detail{padding:56px 18px}
     .proof-grid{grid-template-columns:1fr;gap:48px}
     .proof .right .stat-overlay{position:relative;left:auto;bottom:auto;margin-top:-32px;max-width:none}
     .proof-numbers{margin-top:48px}
+
+    /* founder */
     .founder-inner{grid-template-columns:1fr;gap:48px}
+
+    /* opportunity */
     .opp-range{grid-template-columns:1fr;gap:18px}
+    .opp-range .total{font-size:clamp(40px,10vw,56px)}
+
+    /* path */
+    .path-strip .step .num{font-size:52px}
+
+    /* finale */
+    .finale h2{font-size:clamp(48px,12vw,72px)}
+
+    /* opportunity table */
     table.unit thead{display:none}
     table.unit, table.unit tbody, table.unit tfoot, table.unit tr, table.unit td{display:block;width:100%}
     table.unit td{padding:12px 0;border-bottom:1px solid rgba(245,239,230,.2)}
@@ -1060,6 +1094,8 @@
     table.unit td.r{text-align:left;font-size:18px}
     table.unit tfoot td{padding:18px 0}
     table.unit tfoot td.r{font-size:28px}
+
+    /* faq + footer */
     .faq-inner{grid-template-columns:1fr;gap:32px}
     .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
   }
