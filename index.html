@@ -6,7 +6,7 @@
 <title>Switch Society — Franchise · The Statement</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&family=Inter:wght@400;500;600;700;800;900&family=Pinyon+Script&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&family=Inter:wght@400;500;600;700;800;900&family=Pinyon+Script&display=swap" rel="stylesheet" />
 <style>
   :root{
     --magenta:#D6168B;
@@ -74,17 +74,17 @@
   .logo{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
   .logo .row1{
     font-family:'Playfair Display',serif;font-weight:700;
-    letter-spacing:.18em;color:var(--magenta);font-size:18px;
+    letter-spacing:.15em;color:var(--magenta);font-size:20px;text-transform:uppercase;
   }
   .logo .row2{
-    font-family:'Pinyon Script',cursive;font-size:24px;
-    margin-top:-2px;margin-bottom:6px;margin-left:32px;line-height:1.15;padding-bottom:2px;
+    font-family:'Pinyon Script',cursive;font-size:26px;
+    margin-top:-10px;margin-bottom:2px;margin-left:28px;padding-bottom:2px;
     background:linear-gradient(180deg,var(--gold-2),var(--gold) 55%,var(--gold-3));
     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;
   }
   .logo .row3{
     font-family:'Inter',sans-serif;font-weight:600;font-size:8px;
-    letter-spacing:.42em;color:var(--ivory);margin-top:-2px;
+    letter-spacing:.25em;color:var(--ivory);margin-top:4px;
   }
   nav.links{display:flex;gap:28px;justify-content:center}
   nav.links a{
@@ -233,17 +233,20 @@
 
   /* ─── Marquee ─────────────────────────────────────────── */
   .marquee{
-    background:var(--magenta);color:#fff;
-    overflow:hidden;padding:18px 0;
-    border-top:1px solid var(--magenta-deep);border-bottom:1px solid var(--magenta-deep);
+    background:var(--black-2);color:var(--ivory);
+    overflow:hidden;height:44px;
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    display:flex;align-items:center;
   }
   .marquee-track{
-    display:flex;gap:48px;white-space:nowrap;
-    animation:scroll 28s linear infinite;
-    font-family:'Playfair Display',serif;font-style:italic;font-weight:500;font-size:32px;
+    display:inline-flex;align-items:center;white-space:nowrap;
+    animation:scroll 30s linear infinite;
+    font-family:'JetBrains Mono','Courier New',monospace;font-weight:400;font-size:12px;
+    letter-spacing:.2em;text-transform:uppercase;
   }
-  .marquee-track span{display:inline-flex;align-items:center;gap:48px}
-  .marquee-track span::after{content:"✦";font-style:normal;font-size:18px;color:var(--gold-2)}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee-track span{display:inline-flex;align-items:center;padding:0 28px}
+  .marquee-track span::after{content:"|";font-style:normal;font-size:14px;color:var(--gold);margin-left:28px}
   @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
   /* ─── Cultural — black, massive number ────────────────── */
@@ -1017,6 +1020,7 @@
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
     .marquee-track{animation:none}
+    .marquee-track span:nth-child(n+5){display:none}
     .hero{animation:none}
   }
 
