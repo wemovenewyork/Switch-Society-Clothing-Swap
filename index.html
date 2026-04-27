@@ -804,8 +804,8 @@
   .reveal-x{opacity:0;transform:translateX(-24px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
   .reveal-x.in{opacity:1;transform:none}
   .img-scale{overflow:hidden}
-  .img-scale .placeholder{transform:scale(1.05);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
-  .img-scale.in .placeholder{transform:scale(1)}
+  .img-scale .placeholder,.img-scale img{transform:scale(1.05);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+  .img-scale.in .placeholder,.img-scale.in img{transform:scale(1)}
 
   /* — split-line headline reveal —
      Use clip-path mask instead of overflow:hidden so descenders & ascenders
@@ -1229,7 +1229,7 @@
         </div>
       </div>
       <div class="right reveal img-scale">
-        <div class="placeholder ph"><span class="label">Interior · Saturday · 4pm</span></div>
+        <img src="ss-society-2.webp" alt="Switch Society storefront · Montana Avenue · Billings, MT" class="ph" style="object-fit:cover;width:100%;display:block" />
         <div class="stat-overlay">
           <div class="n">769</div>
           <div class="l">Paid monthly members</div>
@@ -1271,7 +1271,7 @@
 <section class="founder" id="founder">
   <div class="founder-inner">
     <figure class="reveal img-scale">
-      <div class="placeholder ph"><span class="label">Portrait · Emily Petroff · Billings, MT</span></div>
+      <img src="ss-society-1.webp" alt="Emily Petroff · Founder · Switch Society · Billings, MT" class="ph" style="object-fit:cover;width:100%;display:block" />
       <div class="badge">Founder № 001</div>
       <figcaption>Emily Petroff · Founder, est. 2023 · Billings, Montana</figcaption>
     </figure>
